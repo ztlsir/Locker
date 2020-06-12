@@ -1,0 +1,19 @@
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+
+.gradle/
+.vscode/
+build/
+bin/
+.classpath
+.project
+.settings
+.DS_Store
+
+/bin/
+.vscode
+.classpath
