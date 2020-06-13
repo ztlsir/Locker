@@ -23,8 +23,11 @@ public class Locker {
     }
 
     public Bag pickUp(Ticket ticket) {
-        if (!bagMap.containsKey(ticket))
-            throw new InvalidTicketException("The ticket is wrong");
-        return bagMap.get(ticket);
+        if (!bagMap.containsKey(ticket)) {
+            throw new InvalidTicketException("The ticket is invalid");
+        }
+        var bag = bagMap.get(ticket);
+        bagMap.remove(ticket);
+        return bag;
     }
 }
