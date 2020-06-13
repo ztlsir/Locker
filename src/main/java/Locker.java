@@ -6,7 +6,6 @@ import java.util.*;
 public class Locker {
 
     private int size;
-    private int count = 0;
     private Map<Ticket, Bag> bagMap = new HashMap<>();;
 
     public Locker(int size) {
@@ -14,12 +13,12 @@ public class Locker {
     }
 
     public Ticket store(Bag bag) {
-        if (bagMap.size() < size) {
-            var ticket = new Ticket();
-            bagMap.put(ticket, bag);
-            return ticket;
+        if (bagMap.size() >= size) {
+            throw new NoRoomException("The locker is full");
         }
-        throw new NoRoomException("The locker is full");
+        var ticket = new Ticket();
+        bagMap.put(ticket, bag);
+        return ticket;
     }
 
     public Bag pickUp(Ticket ticket) {
