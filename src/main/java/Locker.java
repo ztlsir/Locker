@@ -6,6 +6,6 @@ public class Locker {
     }
 
     public Ticket store(Bag bag) {
-        return null;
+        return new Ticket();
     }
 }
