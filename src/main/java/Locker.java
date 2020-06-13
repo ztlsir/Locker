@@ -16,4 +16,8 @@ public class Locker {
         }
         throw new NoRoomException("The locker is full");
     }
+
+    public Bag pickUp(Ticket ticket) {
+        return null;
+    }
 }

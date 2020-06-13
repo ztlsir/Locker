@@ -27,4 +27,16 @@ public class LockerTest {
         var anotherBag = new Bag();
         assertThatThrownBy(() -> locker.store(anotherBag)).isInstanceOf(NoRoomException.class);
     }
+
+
+    @Test
+    void should_return_a_bag_when_pick_up_with_the_right_ticket() {
+        var locker = new Locker(1);
+        var bag = new Bag();
+        var ticket = locker.store(bag);
+
+        var returnedBag = locker.pickUp(ticket);
+
+        assertThat(returnedBag).isEqualTo(bag);
+    }
 }
