@@ -45,10 +45,20 @@ public class LockerTest {
     public void should_throw_invalidTicketException_when_pick_up_with_the_wrong_ticket() {
         var locker = new Locker(1);
         var bag = new Bag();
-        var ticket = locker.store(bag);
+        locker.store(bag);
 
         var wrongTicket = new Ticket();
 
         assertThatThrownBy(()-> locker.pickUp(wrongTicket)).isInstanceOf(InvalidTicketException.class);
+    }
+
+    @Test
+    public void should_throw_invalidTicketException_when_pick_up_with_a_ticket_has_picked_up() {
+        var locker = new Locker(1);
+        var bag = new Bag();
+        var ticket = locker.store(bag);
+        locker.pickUp(ticket);
+
+        assertThatThrownBy(()-> locker.pickUp(ticket)).isInstanceOf(InvalidTicketException.class);
     }
 }
