@@ -19,7 +19,7 @@ public class LockerTest {
     }
 
     @Test
-    void should_throw_noRoomException_when_storing_a_bag_given_a_locker_with_no_available_cell() {
+    public void should_throw_noRoomException_when_storing_a_bag_given_a_locker_with_no_available_cell() {
         var locker = new Locker(1);
         var bag = new Bag();
 
@@ -31,7 +31,7 @@ public class LockerTest {
 
 
     @Test
-    void should_return_a_bag_when_pick_up_with_the_right_ticket() {
+    public void should_return_a_bag_when_pick_up_with_the_right_ticket() {
         var locker = new Locker(1);
         var bag = new Bag();
         var ticket = locker.store(bag);
@@ -42,7 +42,7 @@ public class LockerTest {
     }
 
     @Test
-    void should_throw_invalidTicketException_when_pick_up_with_the_wrong_ticket() {
+    public void should_throw_invalidTicketException_when_pick_up_with_the_wrong_ticket() {
         var locker = new Locker(1);
         var bag = new Bag();
         var ticket = locker.store(bag);
@@ -51,6 +51,4 @@ public class LockerTest {
 
         assertThatThrownBy(()-> locker.pickUp(wrongTicket)).isInstanceOf(InvalidTicketException.class);
     }
-
-
 }
